@@ -1,0 +1,120 @@
+.titulo_resultados {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    background-color: #8f79cc(287, 12%, 14%, 0.6);
+    border: 2px solid hsla(0, 3%, 6%, 0.7);
+    box-shadow: 0px 0px 6px rgba(255, 255, 255, 0.5);
+    border-radius: 16px;
+    backdrop-filter: blur(16px);
+    width: 50%;
+    position: relative;
+    left: 25%;
+
+}
+
+
+
+.titulo h2 {
+    font-size: 24px;
+    color: #000000;
+}
+
+.resultados {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    background-color: #8f79cc(287, 12%, 14%, 0.6);
+    border: 2px solid hsla(0, 3%, 6%, 0.7);
+    box-shadow: 0px 0px 6px rgba(255, 255, 255, 0.5);
+    border-radius: 16px;
+    backdrop-filter: blur(16px);
+    width: 50%;
+    position: relative;
+    left: 25%;
+}
+
+.caja_texto {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.label1 h2 {
+    font-size: 24px;
+    color: #000000;
+}
+
+.busqueda {
+    width: 500px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 5px;
+    padding-left: 30px;
+    outline: none;
+    background-color: #8f79cc(287, 12%, 14%, 0.6);
+    border: 2px solid hsla(0, 3%, 6%, 0.7);
+    box-shadow: 0px 0px 6px rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(16px);
+    text-align: center;
+    font-weight: bolder;
+}
+
+.checkbox_boton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 25px;
+}
+
+.subtitulo {
+    text-align: center;
+    font-size: x-large;
+    margin-bottom: 20px;
+}
+.checkbox_titulo {
+    font-family: Calibri;
+    color: #000000;
+    text-align: center;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bolder;
+}
+
+.checbox_ {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.checbox_ input[type="checkbox"] {
+    margin-bottom: 10px;
+}
+
+.botones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.boton_limpiar,
+.boton_buscar {
+    color: #8f79cc;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    padding: 20px 40px;
+    border-radius: 30px;
+    transition: background-color 0.3s, color 0.3s;
+    margin: 0 10px;
+    background-color: white; /* Color de fondo */
+    border-color: #8f79cc; /* Color del borde */
+}
+
+.boton_limpiar:hover,
+.boton_buscar:hover {
+    background-color: #8f79cc; /* Cambio de color al pasar el ratón */
+    color: white;
+}

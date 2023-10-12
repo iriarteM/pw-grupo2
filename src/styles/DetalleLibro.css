@@ -1,0 +1,159 @@
+/* Estilos para el formulario y contenedor principal */
+.indexForm {
+    margin: 24px auto;
+    background-color: #f0f0f0;
+    border: 2px solid #ccc;
+    border-radius: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 900px;
+    padding: 20px;
+  }
+  
+  /* Estilos para el título */
+  .index_title {
+    color: #333;
+    font-size: 24px;
+    margin: 0 0 20px;
+  }
+  
+.description {
+    text-align: justify; /* Justifica el texto */
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-y: auto;
+    max-height: 200px;
+    margin-top: 16px;
+    border: 1px solid #ccc; /* Borde más suave en color gris */
+    border-radius: 8px; /* Borde redondeado */
+    padding: 20px; /* Espaciado interno aumentado */
+    background-color: #f7f7f7; /* Color de fondo más claro */
+  }
+  
+  /* Estilos para el contenedor principal */
+  .contexto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 16px;
+    max-width: auto;
+  }
+  
+  /* Estilos para la imagen */
+  div.imagenLibro img {
+    width: 80%;
+    max-width: 400px;
+    height: auto;
+  }
+  
+  /* Estilos para el botón "Disponible" */
+  .dispoButton {
+    background-color: #483285;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 80%;
+  }
+  
+  /* Estilos para los temas */
+  .topics {
+    width: 100%;
+    padding: 16px;
+    margin-top: 16px;
+    background-color: #f0f0f0;
+    border-radius: 16px;
+    color: #333;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .topic1,
+  .topic2 {
+    flex: 1;
+    border: 2px solid #483285;
+    border-radius: 16px;
+    padding: 10px;
+    margin: 0 10px;
+  }
+  
+  /* Estilos para la ParteBaja */
+  .ParteBaja {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  /* Estilos para contenido-left y contenido-right */
+  .contenido-left,
+  .contenido-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+/* Estilos para el div de fecha */
+.fecha {
+    text-align: center;
+  }
+  
+  /* Estilos para la etiqueta "Fecha de reserva" */
+  .fecha-label {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 8px;
+  }
+  
+  /* Estilos para el campo de entrada de fecha */
+  #fecha {
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    max-width: 300px; /* Ajusta el ancho máximo según sea necesario */
+    margin: 0 auto;
+  }
+  
+  /* Estilos para el botón "Reservar" */
+  .reservarButton {
+    background-color: #483285;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 300px; /* Ajusta el ancho máximo según sea necesario */
+    margin: 0 auto;
+  }
+  
+  
+  /* Estilos para el botón "Reservar" */
+  .reservarButton {
+    background-color: #483285;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  

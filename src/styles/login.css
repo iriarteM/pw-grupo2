@@ -1,0 +1,252 @@
+body {
+    background-image: url("../../public/login-bg.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+    --white-color: hsl(0, 0%, 100%);
+    --black-color: hsl(0, 0%, 0%);
+    --body-font: "Calibri";
+    --h1-font-size: 32px;
+    --h2-font-size: 24px;
+    --normal-font-size: 16px;
+    --small-font-size: 13px;
+}
+
+/*=============== BASE ===============*/
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body,
+input,
+button {
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+}
+
+/*=============== LOGIN ===============*/
+.login {
+    position: relative;
+    height: 100vh;
+    display: grid;
+    align-items: center;
+}
+
+.login_form {
+    position: relative;
+    margin-inline: 24px;
+    background-color: hsla(0, 0%, 100%, 0.01);
+    border: 2px solid hsla(0, 0%, 100%, 0.7);
+    padding: 40px 16px;
+    color: var(--white-color);
+    border-radius: 16px;
+    backdrop-filter: blur(16px);
+}
+
+.login_title {
+    text-align: center;
+    font-size: var(--h1-font-size);
+    margin-bottom: 20px;
+}
+
+.login_inputs,
+.login_box {
+    display: grid;
+}
+
+.login_inputs {
+    row-gap: 20px;
+    margin-bottom: 16px;
+}
+
+.login_box {
+    column-gap: 12px;
+    align-items: center;
+    border: 2px solid hsla(0, 0%, 100%, 0.7);
+    padding-inline: 20px;
+    border-radius: 64px;
+}
+
+.login_input,
+.login_button {
+    border: none;
+    outline: none;
+}
+
+.login_input {
+    width: 100%;
+    background: none;
+    color: var(--white-color);
+    padding-block: 16px;
+}
+
+.login_input::placeholder {
+    color: var(--white-color);
+}
+
+.login_check,
+.login_check {
+    margin-bottom: 16px;
+    font-size: var(--small-font-size);
+}
+
+.login_forgot {
+    color: var(--white-color);
+    margin-bottom: 20px;
+}
+
+.login_button {
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 16px;
+    background-color: var(--white-color);
+    border-radius: 64px;
+    color: var(--black-color);
+    font-weight: 500;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+.login_register {
+    font-size: var(--small-font-size);
+    text-align: center;
+}
+
+.login_register a {
+    color: var(--white-color);
+    font-weight: 500;
+}
+
+.login_button:hover {
+    background-color: #ae8ee2;
+}
+
+/*=============== BREAKPOINTS ===============*/
+@media screen and (min-width: 576px) {
+    .login {
+        justify-content: center;
+    }
+    .login_form {
+        width: 420px;
+        padding-inline: 40px;
+    }
+    .login_title {
+        margin-bottom: 32px;
+    }
+}
+
+/*=============== REGISTRO ===============*/
+.registro {
+    position: relative;
+    height: 100vh;
+    display: grid;
+    align-items: center;
+}
+
+.cuerpo {
+    display: grid;
+    justify-content: space-between;
+    margin-inline: 24px;
+    background-color: hsla(0, 0%, 100%, 0.01);
+    border: 2px solid hsla(0, 0%, 100%, 0.7);
+    padding: 50px 16px;
+    color: var(--white-color);
+    border-radius: 16px;
+    backdrop-filter: blur(16px);
+}
+
+.registro_form {
+    display: flex;
+    justify-content: space-between;
+    margin-inline: 24px;
+    padding: 50px 16px;
+    color: var(--white-color);
+}
+
+.registro_title {
+    text-align: center;
+    font-size: var(--h1-font-size);
+}
+
+.registro_title2 {
+    text-align: center;
+    font-size: var(--h2-font-size);
+}
+
+.registro_inputs,
+.registro_box {
+    display: grid;
+}
+
+.registro_inputs {
+    flex: 1;
+    margin-left: 50px;
+    margin-right: 50px;
+    row-gap: 20px;
+}
+
+.registro_box {
+    align-items: center;
+    border: 2px solid hsla(0, 0%, 100%, 0.7);
+    padding-inline: 20px;
+    border-radius: 64px;
+}
+
+.registro_input,
+.registro_button {
+    border: none;
+    outline: none;
+}
+
+.registro_input {
+    width: 100%;
+    background: none;
+    color: var(--white-color);
+    padding-block: 16px;
+}
+
+.registro_input::placeholder {
+    color: var(--white-color);
+}
+
+.registro_check,
+.registro_check {
+    margin-bottom: 16px;
+    font-size: var(--small-font-size);
+}
+
+.registro_button {
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 5px;
+    background-color: var(--white-color);
+    border-radius: 64px;
+    color: var(--black-color);
+    font-weight: 500;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+.registro_button:hover {
+    background-color: #ae8ee2;
+}
+
+/*=============== BREAKPOINTS ===============*/
+@media screen and (min-width: 1000px) {
+    .registro {
+        justify-content: center;
+    }
+    .registro_form {
+        width: 750px;
+        padding-inline: 0px;
+    }
+    .registro_title {
+        margin-bottom: 5px;
+    }
+}

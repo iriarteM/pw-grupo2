@@ -1,0 +1,13 @@
+[
+    {
+        "nombre": "admin",
+        "apellido": "admin",
+        "tipoDocumento": "DNI",
+        "nroDocumento": "11111111",
+        "correo": "admin@admin",
+        "contraseña": "admin",
+        "idioma": "español",
+        "prefijo": "-",
+        "color": "blanco"
+    }
+]

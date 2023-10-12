@@ -1,0 +1,72 @@
+/* Estilos generales */
+.container {
+    margin: 24px auto;
+    background-color: #f0f0f0;
+    border: 2px solid #ccc;
+    border-radius: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    padding: 20px;
+  }
+  
+  #bienvenido {
+    color: #333;
+    font-size: 24px;
+    margin: 0 0 20px;
+  }
+  
+  #lineah {
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilos para las tarjetas */
+  .card {
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 0 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Estilos para el círculo y el título */
+  #circulo {
+    background-color: #483285;
+    color: white;
+    border-radius: 50%;
+    padding: 6px 10px;
+    margin-right: 10px;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
+  .cleancode {
+    font-weight: bold;
+  }
+  
+  /* Estilos para el texto pequeño */
+  .small-text {
+    color: #666;
+    font-size: 14px;
+    margin-left: 40px;
+  }
+  
+  /* Estilos para la imagen */
+  .imagen {
+    max-width: 100px;
+    height: auto;
+  }
+  
+  /* Estilos para el enlace "Ver Todo" */
+  #ver-todo {
+    color: #483285;
+    text-decoration: underline;
+  }
+  
+  #ver-todo:hover {
+    text-decoration: none;
+  }
+  
