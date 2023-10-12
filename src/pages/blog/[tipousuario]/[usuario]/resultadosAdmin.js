@@ -14,7 +14,7 @@ const Resultados = () => {
             <Layout
                 content={
                     <>
-                        <p>Hola</p>
+                        <p>PRESTAMOS</p>
                     </>
                 }
             />

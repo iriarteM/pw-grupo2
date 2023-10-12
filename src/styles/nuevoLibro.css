@@ -1,0 +1,84 @@
+.interconexion {
+    position: relative;
+    height: 100vh;
+    display: grid;
+    align-items: center;
+  }
+  
+  .formulario_de_conexion {
+    position: relative;
+    margin-inline: 24px;
+    background-color: #f0f0f0;
+    border: 2px solid #ccc;
+    padding: 40px 10px;
+    border-radius: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 50%;
+    left: 25%;
+  }
+  
+  .titulo_de_acceso {
+    color: #333;
+    font-size: 24px;
+    margin: 0 0 20px;
+    text-align: center;
+  }
+  
+
+  .campos_de_ingreso,
+  .contenedor_de_conexion{
+    display: grid;
+    margin-top: 20px;
+  }
+
+  
+  .contenedor_de_conexion {
+    column-gap: 12px;
+    align-items: center;
+    border: 2px solid #483285;
+    color: #333;
+    padding-inline: 20px;
+    border-radius: 64px;
+    width: 50%;
+    position: relative;
+    left: 25%; /*Para centrar los inputs*/
+  }
+ 
+  
+  .campo_de_ingreso,
+  .boton_de_ingreso {
+    border: none;
+    outline: none;
+  }
+
+  .boton_de_ingreso {
+    position: relative;
+    left: 25%;
+  }
+  
+  .campo_de_ingreso {
+    background: none;
+    color: #333;
+    padding-block: 16px;
+  }
+  
+  .boton_de_ingreso {
+    width: 50%;
+    padding: 16px;
+    margin-bottom: 16px;
+    background-color: #483285;
+    border-radius: 64px;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    font-weight: bolder;
+    margin-top: 20px;
+  }
+  
+  .campo_de_ingreso {
+    background: none;
+    color: #333;
+    padding-block: 16px;
+    padding-inline: 10px; /* Ajusta el valor para centrar el input */
+  }
+  

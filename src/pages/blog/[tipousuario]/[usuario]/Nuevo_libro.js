@@ -41,83 +41,83 @@ const nuevo_libro = () => {
 
     return (
         <Layout
-            content={
-                <>
-                    <Head>
-                        <title>Sistema de biblioteca</title>
-                    </Head>
-
-                    <div className="login">
-                        <form action="" className="login_form">
-                            <h1 className="login_title">
-                                Sistema de Reservas de Libros
-                            </h1>
-                            <div className="login_inputs">
-                                <div className="login_box">
-                                    <input
-                                        type="text"
-                                        placeholder="Título"
-                                        name="titulo"
-                                        value={nuevoLibro.titulo}
-                                        onChange={handleInputChange}
-                                        className="login_input"
-                                        maxLength="35"
-                                        required
-                                    />
-                                </div>
-                                <div className="login_box">
-                                    <input
-                                        type="text"
-                                        placeholder="Autor"
-                                        name="autor"
-                                        value={nuevoLibro.autor}
-                                        onChange={handleInputChange}
-                                        className="login_input"
-                                        maxLength="35"
-                                        required
-                                    />
-                                </div>
-                                <div className="login_box">
-                                    <input
-                                        type="text"
-                                        placeholder="ISBN"
-                                        name="isbn"
-                                        value={nuevoLibro.isbn}
-                                        onChange={handleInputChange}
-                                        className="login_input"
-                                        maxLength="35"
-                                        required
-                                    />
-                                </div>
-
-                                <div className="login_box">
-                                    <input
-                                        id="input4"
-                                        type="text"
-                                        placeholder="Serie, Tipo"
-                                        name="serieTipo"
-                                        value={nuevoLibro.serieTipo}
-                                        onChange={handleInputChange}
-                                        className="login_input"
-                                        maxLength="35"
-                                        required
-                                    />
-                                </div>
-                            </div>
-
-                            <button
-                                type="submit"
-                                className="login_button"
-                                onClick={handleGuardarClick}
-                            >
-                                Guardar
-                            </button>
-                        </form>
+          content={
+            <>
+              <Head>
+                <title>Sistema de biblioteca</title>
+              </Head>
+      
+              <div className="interconexion">
+                <form action="" className="formulario_de_conexion">
+                  <h1 className="titulo_de_acceso">
+                    Sistema de Reservas de Textos Bibliográficos
+                  </h1>
+                  <div className="campos_de_ingreso">
+                    <div className="contenedor_de_conexion">
+                      <input
+                        type="text"
+                        placeholder="Título"
+                        name="titulo"
+                        value={nuevoLibro.titulo}
+                        onChange={handleInputChange}
+                        className="campo_de_ingreso"
+                        maxLength="35"
+                        required
+                      />
                     </div>
-                </>
-            }
+                    <div className="contenedor_de_conexion">
+                      <input
+                        type="text"
+                        placeholder="Autor"
+                        name="autor"
+                        value={nuevoLibro.autor}
+                        onChange={handleInputChange}
+                        className="campo_de_ingreso"
+                        maxLength="35"
+                        required
+                      />
+                    </div>
+                    <div className="contenedor_de_conexion">
+                      <input
+                        type="text"
+                        placeholder="ISBN"
+                        name="isbn"
+                        value={nuevoLibro.isbn}
+                        onChange={handleInputChange}
+                        className="campo_de_ingreso"
+                        maxLength="35"
+                        required
+                      />
+                    </div>
+      
+                    <div className="contenedor_de_conexion">
+                      <input
+                        id="input4"
+                        type="text"
+                        placeholder="Serie, Tipo"
+                        name="serieTipo"
+                        value={nuevoLibro.serieTipo}
+                        onChange={handleInputChange}
+                        className="campo_de_ingreso"
+                        maxLength="35"
+                        required
+                      />
+                    </div>
+                  </div>
+      
+                  <button
+                    type="submit"
+                    className="boton_de_ingreso"
+                    onClick={handleGuardarClick}
+                  >
+                    Guardar
+                  </button>
+                </form>
+              </div>
+            </>
+          }
         />
-    );
+      );
 };
 
 export default nuevo_libro;
