@@ -65,7 +65,6 @@ const Login = () => {
                     <h1 className="login_title">
                         Sistema de Revervas de Libros
                     </h1>
-
                     <div className="login_inputs">
                         <div className="login_box">
                             <input
@@ -93,23 +92,18 @@ const Login = () => {
                             />
                         </div>
                     </div>
-
                     <div className="login_check">
                         <a href="#" className="login_forgot">
                             Olvidé mi contraseña
                         </a>
                     </div>
-
                     <button type="submit" className="login_button">
                         Ingresar
                     </button>
-
                     <div className="login_register">
                         <Link href="/registro">Registrar</Link>
                     </div>
-
-                    /* hola */
-                    /*Hola2*/
+                    /* hola Hola2*/
                 </form>
             </div>
         </>
