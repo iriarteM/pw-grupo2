@@ -38,7 +38,7 @@ const Registro = () => {
             try {
                 await escribir();
                 alert("Registo exitoso");
-                window.location.href = "/login";
+                window.location.href = "http://localhost:3000/";
             } catch (error) {
                 console.error("Error de registo de usuario:", error);
                 alert(
