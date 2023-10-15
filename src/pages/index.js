@@ -105,6 +105,8 @@ const Login = () => {
                     <div className="login_register">
                         <Link href="/registro">Registrar</Link>
                     </div>
+
+                    /* hola */
                 </form>
             </div>
         </>
