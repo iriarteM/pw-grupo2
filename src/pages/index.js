@@ -6,8 +6,6 @@ import { useRouter } from "next/router";
 import Admins from "/administradores.json";
 import Usuario from "/usuarios.json";
 
-/* Comentario */
-/* Comentario */
 const Login = () => {
     const [state, setState] = useState({ usuario: "", contraseña: "" });
     const router = useRouter();
@@ -103,11 +101,6 @@ const Login = () => {
                     <div className="login_register">
                         <Link href="/registro">Registrar</Link>
                     </div>
-
-
-                    /* hola */
-                    /*Hola3*/
-
                 </form>
             </div>
         </>
