@@ -102,7 +102,7 @@ const Login = () => {
                     </button>
                     <div className="login_register">
                         <Link href="/registro">Registrar</Link>
-                        Hola mundo
+                        AHola Marte
                     </div>
                 </form>
             </div>
