@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import Admins from "/administradores.json";
 import Usuario from "/usuarios.json";
 
+/* Comentario */
 const Login = () => {
     const [state, setState] = useState({ usuario: "", contraseña: "" });
     const router = useRouter();
