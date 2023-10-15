@@ -52,7 +52,7 @@ export default (props) => {
                             </Link>
                         </li>
                         <li>
-                            <Link href="/login">Exit</Link>
+                            <Link href="http://localhost:3000/">Exit</Link>
                         </li>
                     </ul>
                 </div>

@@ -51,6 +51,9 @@ export default (props) => {
                                 Préstamos
                             </Link>
                         </li>
+                        <li>
+                            <Link href="http://localhost:3000/">Exit</Link>
+                        </li>
                     </ul>
                 </div>
             </div>
