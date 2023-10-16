@@ -90,7 +90,7 @@ const Perfil = () => {
             content={
                 <>
                     <Head>
-                        <title>Perfil</title>
+                        <title>Perfil Administrador</title>
                     </Head>
                     <div className="auth-container">
                         <div className="auth-container">

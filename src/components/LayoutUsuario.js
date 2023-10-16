@@ -22,9 +22,6 @@ export default (props) => {
 
     return (
         <>
-            <Head>
-                <title>Usuario</title>
-            </Head>
             <header id="topbar">
                 <div id="menu-icon" onClick={toggleMenu}>
                     &#9776;

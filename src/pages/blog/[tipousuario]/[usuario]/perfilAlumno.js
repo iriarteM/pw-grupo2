@@ -88,10 +88,7 @@ const Perfil = () => {
             content={
                 <>
                     <Head>
-                        <title>Perfil</title>
-                    </Head>
-                    <Head>
-                        <title>Login</title>
+                        <title>Perfil Usuario</title>
                     </Head>
                     <div className="auth-container">
                         <div className="data-form">
