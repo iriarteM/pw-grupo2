@@ -6,6 +6,24 @@ import Layout from "@/components/LayoutUsuario";
 import Alumno from "/usuarios.json";
 
 const Perfil = () => {
+    const router = useRouter();
+    const { usuario } = router.query;
+    console.log(`Usuario recuperado del login: ${usuario}`);
+
+    let alumnoEncontrado = null;
+
+    // Recorre el objeto de alumnos usando forEach
+    Object.keys(Alumno).forEach((id) => {
+        const alumno = Alumno[id];
+        if (alumno.correo === usuario) {
+            alumnoEncontrado = alumno;
+        }
+    });
+    console.log(
+        "Alumno encontrado:",
+        JSON.stringify(alumnoEncontrado, null, 4)
+    );
+
     const [section, setSection] = useState(null);
 
     return (
