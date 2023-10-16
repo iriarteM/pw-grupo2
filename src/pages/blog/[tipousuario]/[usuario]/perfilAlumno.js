@@ -24,52 +24,64 @@ const Perfil = () => {
         JSON.stringify(alumnoEncontrado, null, 4)
     );
 
-    const [state, setState] = useState( 
-        { nombres : "", apellidos : "", tipoDocumento : "DNI", nroDocumento : "", 
-        correo : "", password : ""}
-        )
+    const [state, setState] = useState({
+        nombres: "",
+        apellidos: "",
+        tipoDocumento: "DNI",
+        nroDocumento: "",
+        correo: "",
+        password: "",
+    });
 
-    function mngmtChange(e){
-            console.log( e.target.name , e.target.value)
-            setState( {...state, [e.target.name]  : e.target.value })
-        }
+    function mngmtChange(e) {
+        console.log(e.target.name, e.target.value);
+        setState({ ...state, [e.target.name]: e.target.value });
+    }
 
     async function leer() {
-            const opciones = {
-                method : 'GET',
-                headers : {
-                    "Content-Type" : "application/json"
-                }
-            }
-    
-            const request = await fetch( '../../../api/actualizarAlumno/leer', opciones)
-            let data = await request.json()
-            console.log( data)
-            return data
-        }    
+        const opciones = {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        };
+
+        const request = await fetch(
+            "../../../api/actualizarAlumno/leer",
+            opciones
+        );
+        let data = await request.json();
+        console.log(data);
+        return data;
+    }
 
     async function escribir() {
-            let data = await leer()
-    
-            const usuarioIndex = data.findIndex((usuario) => usuario.nroDocumento === alumnoEncontrado.nroDocumento)
-    
-            if(usuarioIndex !== -1){
-                data[usuarioIndex] = {...data[usuarioIndex], ...state}
-            }
-    
-            // Llamar a escribir
-            const opciones = {
-                method : 'POST',
-                body : JSON.stringify( data ),
-                headers : {
-                    "Content-Type" : "application/json"
-                }
-            }
-    
-            const request = await fetch( '../../../api/actualizarAlumno/escribir', opciones)
-            data = await request.json()
-            console.log(data)
+        let data = await leer();
+
+        const usuarioIndex = data.findIndex(
+            (usuario) => usuario.nroDocumento === alumnoEncontrado.nroDocumento
+        );
+
+        if (usuarioIndex !== -1) {
+            data[usuarioIndex] = { ...data[usuarioIndex], ...state };
         }
+
+        // Llamar a escribir
+        const opciones = {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        };
+
+        const request = await fetch(
+            "../../../api/actualizarAlumno/escribir",
+            opciones
+        );
+        data = await request.json();
+        console.log(data);
+    }
 
     return (
         <Layout
@@ -82,51 +94,70 @@ const Perfil = () => {
                         <title>Login</title>
                     </Head>
                     <div className="auth-container">
-                        
                         <div className="data-form">
-                            <p>Si quiere cambiar sus datos tiene que modificar todas las casillas</p>
-                                    <input name="nombres" type="text"
-                                        placeholder="Nombre"
-                                        onChange={mngmtChange}
-                                        value={state.nombres}
-                                        className="input-data"
-                                    />
-                                    <input name="apellidos" type="text"
-                                        placeholder="Apellidos"
-                                        onChange={mngmtChange}
-                                        value={state.apellidos}
-                                        className="input-data"
-                                    />
-                                    <select name="tipoDocumento"
-                                        placeholder="DNI, Pasarporte, Otros"
-                                        onChange={mngmtChange}
-                                        value={state.tipoDocumento}
-                                        className="input-data">
-                                        <option value="dni">DNI</option>
-                                        <option value="pasaporte">Pasaporte</option>
-                                        <option value="otros">Otros</option></select>
-                                    <input name="nroDocumento" type="text"
-                                        placeholder="N° de documento elegido"
-                                        onChange={mngmtChange}
-                                        value={state.nroDocumento}
-                                        className="input-data"
-                                    />
-                                    <input name="correo" type="text"
-                                        placeholder="Correo"
-                                        onChange={mngmtChange}
-                                        value={state.correo}
-                                        className="input-data"
-                                    />
-                                    <input name="password" type="password"
-                                        placeholder="Contraseña"
-                                        onChange={mngmtChange}
-                                        value={state.password}
-                                        className="input-data"
-                                    />
-                                    <button type="button" className="save-btn" onClick={escribir}>
-                                        Modificar
-                                    </button>
-                            </div>
+                            <p>
+                                Si quiere cambiar sus datos tiene que modificar
+                                todas las casillas
+                            </p>
+                            <input
+                                name="nombres"
+                                type="text"
+                                placeholder="Nombre"
+                                onChange={mngmtChange}
+                                value={state.nombres}
+                                className="input-data"
+                            />
+                            <input
+                                name="apellidos"
+                                type="text"
+                                placeholder="Apellidos"
+                                onChange={mngmtChange}
+                                value={state.apellidos}
+                                className="input-data"
+                            />
+                            <select
+                                name="tipoDocumento"
+                                placeholder="DNI, Pasarporte, Otros"
+                                onChange={mngmtChange}
+                                value={state.tipoDocumento}
+                                className="input-data"
+                            >
+                                <option value="dni">DNI</option>
+                                <option value="pasaporte">Pasaporte</option>
+                                <option value="otros">Otros</option>
+                            </select>
+                            <input
+                                name="nroDocumento"
+                                type="text"
+                                placeholder="N° de documento elegido"
+                                onChange={mngmtChange}
+                                value={state.nroDocumento}
+                                className="input-data"
+                            />
+                            <input
+                                name="correo"
+                                type="text"
+                                placeholder="Correo"
+                                onChange={mngmtChange}
+                                value={state.correo}
+                                className="input-data"
+                            />
+                            <input
+                                name="password"
+                                type="password"
+                                placeholder="Contraseña"
+                                onChange={mngmtChange}
+                                value={state.password}
+                                className="input-data"
+                            />
+                            <button
+                                type="button"
+                                className="save-btn"
+                                onClick={escribir}
+                            >
+                                Modificar
+                            </button>
+                        </div>
                     </div>
                 </>
             }

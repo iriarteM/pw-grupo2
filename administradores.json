@@ -2,8 +2,8 @@
     {
         "nombre": "admin",
         "apellido": "admin",
-        "tipoDocumento": "DNI",
-        "nroDocumento": "11111111",
+        "tipoDocumento": "dni",
+        "nroDocumento": "00000000",
         "correo": "admin@admin",
         "contraseña": "admin",
         "idioma": "español",
