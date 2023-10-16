@@ -102,6 +102,7 @@ const Perfil = () => {
                             <input
                                 name="nombres"
                                 type="text"
+                                maxLength="30"
                                 placeholder="Nombre"
                                 onChange={mngmtChange}
                                 value={state.nombres}
@@ -110,6 +111,7 @@ const Perfil = () => {
                             <input
                                 name="apellidos"
                                 type="text"
+                                maxLength="30"
                                 placeholder="Apellidos"
                                 onChange={mngmtChange}
                                 value={state.apellidos}
@@ -129,6 +131,7 @@ const Perfil = () => {
                             <input
                                 name="nroDocumento"
                                 type="text"
+                                maxLength="8"
                                 placeholder="N° de documento elegido"
                                 onChange={mngmtChange}
                                 value={state.nroDocumento}
@@ -137,6 +140,7 @@ const Perfil = () => {
                             <input
                                 name="correo"
                                 type="text"
+                                maxLength="35"
                                 placeholder="Correo"
                                 onChange={mngmtChange}
                                 value={state.correo}
@@ -145,6 +149,7 @@ const Perfil = () => {
                             <input
                                 name="password"
                                 type="password"
+                                maxLength="12"
                                 placeholder="Contraseña"
                                 onChange={mngmtChange}
                                 value={state.password}
