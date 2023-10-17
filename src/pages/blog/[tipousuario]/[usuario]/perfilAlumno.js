@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
 import Layout from "@/components/LayoutUsuario";
 import Alumno from "/usuarios.json";
+import Image from "next/image";
 
 const Perfil = () => {
     const router = useRouter();
@@ -66,6 +67,10 @@ const Perfil = () => {
             data[usuarioIndex] = { ...data[usuarioIndex], ...state };
         }
 
+        if (typeof data[adminIndex].imagen === undefined){
+            data[adminIndex].imagen = null
+        }
+
         // Llamar a escribir
         const opciones = {
             method: "POST",
@@ -83,6 +88,77 @@ const Perfil = () => {
         console.log(data);
     }
 
+    const [guardar, setGuardar] = useState(null)
+
+    function subirImagen(event) {
+        const archivo = event.target.files[0];
+
+        if (archivo) {
+            const reader = new FileReader();
+
+            reader.onload = (e) => {
+                const imageSrc = e.target.result;
+                setGuardar(imageSrc);
+            };
+            reader.readAsDataURL(archivo);
+        }
+    }
+
+    async function guardarImagen (){
+        let data = await leer();
+
+        const adminIndex = data.findIndex(
+            (usuario) => usuario.nroDocumento === alumnoEncontrado.nroDocumento
+        );
+            console.log(guardar)
+        if (adminIndex !== -1) {
+            data[adminIndex].imagen = guardar
+        }
+
+        const opciones = {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        };
+
+        const request = await fetch(
+            "../../../api/actualizarAlumno/escribir",
+            opciones
+        );
+        data = await request.json();
+        console.log(data);
+        }
+
+        async function quitarImagen (){
+            let data = await leer();
+    
+            const adminIndex = data.findIndex(
+                (usuario) => usuario.nroDocumento === alumnoEncontrado.nroDocumento
+            );
+                console.log(guardar)
+            if (adminIndex !== -1) {
+                data[adminIndex].imagen = null
+            }
+    
+            const opciones = {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            };
+    
+            const request = await fetch(
+                "../../../api/actualizarAlumno/escribir",
+                opciones
+            );
+            data = await request.json();
+            console.log(data);
+            }
+
+
     return (
         <Layout
             content={
@@ -91,6 +167,40 @@ const Perfil = () => {
                         <title>Perfil Usuario</title>
                     </Head>
                     <div className="auth-container">
+                    <p>Imagen de Perfil:</p>
+                    <br />
+                    <p>
+                            <input
+                                type="file"
+                                accept="image/*"
+                                onChange={subirImagen}
+                            />
+                            
+                            {alumnoEncontrado?.imagen ? (
+                                <Image
+                                    src={alumnoEncontrado.imagen}
+                                    alt="Imagen de perfil"
+                                    className="imagen-de-perfil"
+                                    width={100}
+                                    height={100}
+                                />
+                                
+                            ) : (
+                                <p>No hay imagen de perfil</p>
+                            )}
+                        </p>
+                        <p>
+                        {alumnoEncontrado?.imagen ? (
+                                <button type="button" onClick={quitarImagen}>
+                                Quitar imagen
+                                </button>
+                            ) : (
+                                <button type="button" onClick={guardarImagen}>
+                                Guardar imagen seleccionada
+                                </button>
+                            )}
+                            </p>
+                    <br />
                         <div className="data-form">
                             <p>
                                 Si quiere cambiar sus datos tiene que modificar
