@@ -67,8 +67,8 @@ const Perfil = () => {
             data[usuarioIndex] = { ...data[usuarioIndex], ...state };
         }
 
-        if (typeof data[adminIndex].imagen === undefined){
-            data[adminIndex].imagen = null
+        if (typeof data[adminIndex].imagen === undefined) {
+            data[adminIndex].imagen = null;
         }
 
         // Llamar a escribir
@@ -88,7 +88,7 @@ const Perfil = () => {
         console.log(data);
     }
 
-    const [guardar, setGuardar] = useState(null)
+    const [guardar, setGuardar] = useState(null);
 
     function subirImagen(event) {
         const archivo = event.target.files[0];
@@ -104,15 +104,15 @@ const Perfil = () => {
         }
     }
 
-    async function guardarImagen (){
+    async function guardarImagen() {
         let data = await leer();
 
         const adminIndex = data.findIndex(
             (usuario) => usuario.nroDocumento === alumnoEncontrado.nroDocumento
         );
-            console.log(guardar)
+        console.log(guardar);
         if (adminIndex !== -1) {
-            data[adminIndex].imagen = guardar
+            data[adminIndex].imagen = guardar;
         }
 
         const opciones = {
@@ -129,35 +129,34 @@ const Perfil = () => {
         );
         data = await request.json();
         console.log(data);
+    }
+
+    async function quitarImagen() {
+        let data = await leer();
+
+        const adminIndex = data.findIndex(
+            (usuario) => usuario.nroDocumento === alumnoEncontrado.nroDocumento
+        );
+        console.log(guardar);
+        if (adminIndex !== -1) {
+            data[adminIndex].imagen = null;
         }
 
-        async function quitarImagen (){
-            let data = await leer();
-    
-            const adminIndex = data.findIndex(
-                (usuario) => usuario.nroDocumento === alumnoEncontrado.nroDocumento
-            );
-                console.log(guardar)
-            if (adminIndex !== -1) {
-                data[adminIndex].imagen = null
-            }
-    
-            const opciones = {
-                method: "POST",
-                body: JSON.stringify(data),
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            };
-    
-            const request = await fetch(
-                "../../../api/actualizarAlumno/escribir",
-                opciones
-            );
-            data = await request.json();
-            console.log(data);
-            }
+        const opciones = {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        };
 
+        const request = await fetch(
+            "../../../api/actualizarAlumno/escribir",
+            opciones
+        );
+        data = await request.json();
+        console.log(data);
+    }
 
     return (
         <Layout
@@ -167,15 +166,15 @@ const Perfil = () => {
                         <title>Perfil Usuario</title>
                     </Head>
                     <div className="auth-container">
-                    <p>Imagen de Perfil:</p>
-                    <br />
-                    <p>
+                        <p>Imagen de Perfil:</p>
+                        <br />
+                        <p>
                             <input
                                 type="file"
                                 accept="image/*"
                                 onChange={subirImagen}
                             />
-                            
+
                             {alumnoEncontrado?.imagen ? (
                                 <Image
                                     src={alumnoEncontrado.imagen}
@@ -184,23 +183,22 @@ const Perfil = () => {
                                     width={100}
                                     height={100}
                                 />
-                                
                             ) : (
                                 <p>No hay imagen de perfil</p>
                             )}
                         </p>
                         <p>
-                        {alumnoEncontrado?.imagen ? (
+                            {alumnoEncontrado?.imagen ? (
                                 <button type="button" onClick={quitarImagen}>
-                                Quitar imagen
+                                    Quitar imagen
                                 </button>
                             ) : (
                                 <button type="button" onClick={guardarImagen}>
-                                Guardar imagen seleccionada
+                                    Guardar imagen seleccionada
                                 </button>
                             )}
-                            </p>
-                    <br />
+                        </p>
+                        <br />
                         <div className="data-form">
                             <p>
                                 Si quiere cambiar sus datos tiene que modificar

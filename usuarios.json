@@ -15,7 +15,8 @@
         "nroDocumento": "11111111",
         "correo": "a@a",
         "password": "123",
-        "repetirPassword": "123"
+        "repetirPassword": "123",
+        "imagen": null
     },
     {
         "nombres": "AAA",

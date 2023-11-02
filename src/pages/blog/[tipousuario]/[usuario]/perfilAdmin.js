@@ -68,8 +68,8 @@ const Perfil = () => {
             data[adminIndex] = { ...data[adminIndex], ...state };
         }
 
-        if (typeof data[adminIndex].imagen === undefined){
-            data[adminIndex].imagen = null
+        if (typeof data[adminIndex].imagen === undefined) {
+            data[adminIndex].imagen = null;
         }
 
         // Llamar a escribir
@@ -89,7 +89,7 @@ const Perfil = () => {
         console.log(data);
     }
 
-    const [guardar, setGuardar] = useState(null)
+    const [guardar, setGuardar] = useState(null);
 
     function subirImagen(event) {
         const archivo = event.target.files[0];
@@ -105,15 +105,15 @@ const Perfil = () => {
         }
     }
 
-    async function guardarImagen (){
+    async function guardarImagen() {
         let data = await leer();
 
         const adminIndex = data.findIndex(
             (usuario) => usuario.nroDocumento === adminsEncontrado.nroDocumento
         );
-            console.log(guardar)
+        console.log(guardar);
         if (adminIndex !== -1) {
-            data[adminIndex].imagen = guardar
+            data[adminIndex].imagen = guardar;
         }
 
         const opciones = {
@@ -130,34 +130,34 @@ const Perfil = () => {
         );
         data = await request.json();
         console.log(data);
+    }
+
+    async function quitarImagen() {
+        let data = await leer();
+
+        const adminIndex = data.findIndex(
+            (usuario) => usuario.nroDocumento === adminsEncontrado.nroDocumento
+        );
+        console.log(guardar);
+        if (adminIndex !== -1) {
+            data[adminIndex].imagen = null;
         }
 
-        async function quitarImagen (){
-            let data = await leer();
-    
-            const adminIndex = data.findIndex(
-                (usuario) => usuario.nroDocumento === adminsEncontrado.nroDocumento
-            );
-                console.log(guardar)
-            if (adminIndex !== -1) {
-                data[adminIndex].imagen = null
-            }
-    
-            const opciones = {
-                method: "POST",
-                body: JSON.stringify(data),
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            };
-    
-            const request = await fetch(
-                "../../../api/actualizarAdmin/escribir",
-                opciones
-            );
-            data = await request.json();
-            console.log(data);
-            }
+        const opciones = {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        };
+
+        const request = await fetch(
+            "../../../api/actualizarAdmin/escribir",
+            opciones
+        );
+        data = await request.json();
+        console.log(data);
+    }
 
     return (
         <Layout
@@ -166,17 +166,17 @@ const Perfil = () => {
                     <Head>
                         <title>Perfil Administrador</title>
                     </Head>
-                    
+
                     <div className="auth-container">
-                    <p>Imagen de Perfil:</p>
-                    <br />
-                    <p>
+                        <p>Imagen de Perfil:</p>
+                        <br />
+                        <p>
                             <input
                                 type="file"
                                 accept="image/*"
                                 onChange={subirImagen}
                             />
-                            
+
                             {adminsEncontrado?.imagen ? (
                                 <Image
                                     src={adminsEncontrado.imagen}
@@ -185,93 +185,92 @@ const Perfil = () => {
                                     width={100}
                                     height={100}
                                 />
-                                
                             ) : (
                                 <p>No hay imagen de perfil</p>
                             )}
                         </p>
                         <p>
-                        {adminsEncontrado?.imagen ? (
+                            {adminsEncontrado?.imagen ? (
                                 <button type="button" onClick={quitarImagen}>
-                                Quitar imagen
+                                    Quitar imagen
                                 </button>
                             ) : (
                                 <button type="button" onClick={guardarImagen}>
-                                Guardar imagen seleccionada
+                                    Guardar imagen seleccionada
                                 </button>
                             )}
+                        </p>
+                        <br />
+                        <div className="data-form">
+                            <p>
+                                Si quiere cambiar sus datos tiene que modificar
+                                todas las casillas
                             </p>
-                    <br />
-                            <div className="data-form">
-                                <p>
-                                    Si quiere cambiar sus datos tiene que
-                                    modificar todas las casillas
-                                </p>
-                                <input
-                                    name="nombre"
-                                    type="text"
-                                    maxLength="30"
-                                    placeholder="Nombre"
-                                    onChange={mngmtChange}
-                                    value={state.nombre}
-                                    className="input-data"
-                                />
-                                <input
-                                    name="apellido"
-                                    type="text"
-                                    maxLength="30"
-                                    placeholder="apellido"
-                                    onChange={mngmtChange}
-                                    value={state.apellidos}
-                                    className="input-data"
-                                />
-                                <select
-                                    name="tipoDocumento"
-                                    placeholder="DNI, Pasarporte, Otros"
-                                    onChange={mngmtChange}
-                                    value={state.tipoDocumento}
-                                    className="input-data"
-                                >
-                                    <option value="dni">DNI</option>
-                                    <option value="pasaporte">Pasaporte</option>
-                                    <option value="otros">Otros</option>
-                                </select>
-                                <input
-                                    name="nroDocumento"
-                                    type="text"
-                                    maxLength="8"
-                                    placeholder="N° de documento elegido"
-                                    onChange={mngmtChange}
-                                    value={state.nroDocumento}
-                                    className="input-data"
-                                />
-                                <input
-                                    name="correo"
-                                    type="text"
-                                    maxLength="35"
-                                    placeholder="Correo"
-                                    onChange={mngmtChange}
-                                    value={state.correo}
-                                    className="input-data"
-                                />
-                                <input
-                                    name="contraseña"
-                                    type="password"
-                                    maxLength="12"
-                                    placeholder="Contraseña"
-                                    onChange={mngmtChange}
-                                    value={state.contraseña}
-                                    className="input-data"
-                                />
-                                <button
-                                    type="button"
-                                    className="save-btn"
-                                    onClick={escribir}
-                                >
-                                    Modificar
-                                </button>
-                            </div>
+                            <input
+                                name="nombre"
+                                type="text"
+                                maxLength="30"
+                                placeholder="Nombre"
+                                onChange={mngmtChange}
+                                value={state.nombre}
+                                className="input-data"
+                            />
+                            <input
+                                name="apellido"
+                                type="text"
+                                maxLength="30"
+                                placeholder="apellido"
+                                onChange={mngmtChange}
+                                value={state.apellidos}
+                                className="input-data"
+                            />
+                            <select
+                                name="tipoDocumento"
+                                placeholder="DNI, Pasarporte, Otros"
+                                onChange={mngmtChange}
+                                value={state.tipoDocumento}
+                                className="input-data"
+                            >
+                                <option value="dni">DNI</option>
+                                <option value="pasaporte">Pasaporte</option>
+                                <option value="otros">Otros</option>
+                            </select>
+                            <input
+                                name="nroDocumento"
+                                type="text"
+                                maxLength="8"
+                                placeholder="N° de documento elegido"
+                                onChange={mngmtChange}
+                                value={state.nroDocumento}
+                                className="input-data"
+                            />
+                            <input
+                                name="correo"
+                                type="text"
+                                maxLength="35"
+                                placeholder="Correo"
+                                onChange={mngmtChange}
+                                value={state.correo}
+                                className="input-data"
+                            />
+                            <input
+                                name="contraseña"
+                                type="password"
+                                maxLength="12"
+                                placeholder="Contraseña"
+                                onChange={mngmtChange}
+                                value={state.contraseña}
+                                className="input-data"
+                            />
+                            <button
+                                type="button"
+                                className="save-btn"
+                                onClick={escribir}
+                            >
+                                Modificar
+                            </button>
                         </div>
+                    </div>
                 </>
             }
         />
