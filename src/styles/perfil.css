@@ -1,25 +1,67 @@
-.auth-container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f7f7f7;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-}
-
-.btn-group {
+.contenedor_mayor {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+    padding: 30px 100px;
+}
+.auth-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(252, 252, 252, 0.6);
+    border: 2px solid rgba(73, 50, 133, 0.9);
+    box-shadow: 0px 0px 15px rgba(116, 86, 190, 0.9);
+    padding: 25px;
+    margin: 10px;
+    width: 400px;
+    border-radius: 5%;
 }
 
-.data-form, .account-form {
+.titulo-perfil {
+    flex: 1;
+    font-family: "Arial Black";
+    color: #483285;
+    font-size: 50px;
+}
+
+.imagen-de-perfil {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label[for="cargarImagen"] {
+    background-color: rgba(73, 50, 133, 0.9);
+    font-weight: bolder;
+    color: white;
+    border-radius: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 15px;
+    border: none;
+    display: inline-block;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+}
+.label[for="cargarImagen"]:hover {
+    color: #483285;
+    background-color: var(--white-color);
+    box-shadow: 0px 0px 6px rgba(73, 50, 133, 0.9);
+}
+
+.data-form,
+.account-form {
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
 }
 
-.input-data, .input-account {
+.input-data,
+.input-account {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
@@ -28,23 +70,21 @@
 }
 
 .save-btn {
-    background-color: #483285;
+    background-color: rgba(73, 50, 133, 0.9);
+    font-weight: bolder;
     color: white;
+    border-radius: 50px;
+    margin-top: 20px;
+    padding: 15px;
     border: none;
-    border-radius: 5px;
-    padding: 10px;
+    display: flex;
+    justify-content: center;
+    position: relative;
     cursor: pointer;
 }
 
-.register-link {
-    text-align: center;
-}
-
-.register-link a {
+.save-btn:hover {
     color: #483285;
-    text-decoration: none;
-}
-
-.register-link a:hover {
-    text-decoration: underline;
+    background-color: var(--white-color);
+    box-shadow: 0px 0px 6px rgba(73, 50, 133, 0.9);
 }

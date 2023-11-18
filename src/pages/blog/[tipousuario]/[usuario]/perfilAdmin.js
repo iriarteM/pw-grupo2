@@ -166,109 +166,119 @@ const Perfil = () => {
                     <Head>
                         <title>Perfil Administrador</title>
                     </Head>
-
-                    <div className="auth-container">
-                        <p>Imagen de Perfil:</p>
-                        <br />
-                        <p>
-                            <input
-                                type="file"
-                                accept="image/*"
-                                onChange={subirImagen}
-                            />
-
-                            {adminsEncontrado?.imagen ? (
-                                <Image
-                                    src={adminsEncontrado.imagen}
-                                    alt="Imagen de perfil"
-                                    className="imagen-de-perfil"
-                                    width={100}
-                                    height={100}
+                    <div className="contenedor_mayor">
+                        <div className="auth-container">
+                            <h1 className="titulo-perfil">PERFIL:</h1>
+                            <div>
+                                <input
+                                    type="file"
+                                    id="cargarImagen"
+                                    accept="image/*"
+                                    style={{ display: "none" }}
+                                    onChange={subirImagen}
                                 />
-                            ) : (
-                                <p>No hay imagen de perfil</p>
-                            )}
-                        </p>
-                        <p>
-                            {adminsEncontrado?.imagen ? (
-                                <button type="button" onClick={quitarImagen}>
-                                    Quitar imagen
-                                </button>
-                            ) : (
-                                <button type="button" onClick={guardarImagen}>
-                                    Guardar imagen seleccionada
-                                </button>
-                            )}
-                        </p>
-                        <br />
-                        <div className="data-form">
+                                <label htmlFor="cargarImagen">
+                                    Cargar Imagen
+                                </label>
+                                {adminsEncontrado?.imagen ? (
+                                    <Image
+                                        src={adminsEncontrado.imagen}
+                                        alt="Imagen de perfil"
+                                        className="imagen-de-perfil"
+                                        width={100}
+                                        height={100}
+                                    />
+                                ) : (
+                                    <p>No hay imagen de perfil</p>
+                                )}
+                            </div>
                             <p>
-                                Si quiere cambiar sus datos tiene que modificar
-                                todas las casillas
+                                {adminsEncontrado?.imagen ? (
+                                    <button
+                                        type="button"
+                                        onClick={quitarImagen}
+                                    >
+                                        Quitar imagen
+                                    </button>
+                                ) : (
+                                    <button
+                                        type="button"
+                                        onClick={guardarImagen}
+                                    >
+                                        Guardar imagen seleccionada
+                                    </button>
+                                )}
                             </p>
-                            <input
-                                name="nombre"
-                                type="text"
-                                maxLength="30"
-                                placeholder="Nombre"
-                                onChange={mngmtChange}
-                                value={state.nombre}
-                                className="input-data"
-                            />
-                            <input
-                                name="apellido"
-                                type="text"
-                                maxLength="30"
-                                placeholder="apellido"
-                                onChange={mngmtChange}
-                                value={state.apellidos}
-                                className="input-data"
-                            />
-                            <select
-                                name="tipoDocumento"
-                                placeholder="DNI, Pasarporte, Otros"
-                                onChange={mngmtChange}
-                                value={state.tipoDocumento}
-                                className="input-data"
-                            >
-                                <option value="dni">DNI</option>
-                                <option value="pasaporte">Pasaporte</option>
-                                <option value="otros">Otros</option>
-                            </select>
-                            <input
-                                name="nroDocumento"
-                                type="text"
-                                maxLength="8"
-                                placeholder="N° de documento elegido"
-                                onChange={mngmtChange}
-                                value={state.nroDocumento}
-                                className="input-data"
-                            />
-                            <input
-                                name="correo"
-                                type="text"
-                                maxLength="35"
-                                placeholder="Correo"
-                                onChange={mngmtChange}
-                                value={state.correo}
-                                className="input-data"
-                            />
-                            <input
-                                name="contraseña"
-                                type="password"
-                                maxLength="12"
-                                placeholder="Contraseña"
-                                onChange={mngmtChange}
-                                value={state.contraseña}
-                                className="input-data"
-                            />
-                            <button
-                                type="button"
-                                className="save-btn"
-                                onClick={escribir}
-                            >
-                                Modificar
-                            </button>
+                            <br />
+                            <div className="data-form">
+                                <p>
+                                    Si quiere cambiar sus datos tiene que
+                                    modificar todas las casillas
+                                </p>
+                                <input
+                                    name="nombre"
+                                    type="text"
+                                    maxLength="30"
+                                    placeholder="Nombre"
+                                    onChange={mngmtChange}
+                                    value={state.nombre}
+                                    className="input-data"
+                                />
+                                <input
+                                    name="apellido"
+                                    type="text"
+                                    maxLength="30"
+                                    placeholder="Apellido"
+                                    onChange={mngmtChange}
+                                    value={state.apellidos}
+                                    className="input-data"
+                                />
+                                <select
+                                    name="tipoDocumento"
+                                    placeholder="DNI, Pasarporte, Otros"
+                                    onChange={mngmtChange}
+                                    value={state.tipoDocumento}
+                                    className="input-data"
+                                >
+                                    <option value="dni">DNI</option>
+                                    <option value="pasaporte">Pasaporte</option>
+                                    <option value="otros">Otros</option>
+                                </select>
+                                <input
+                                    name="nroDocumento"
+                                    type="text"
+                                    maxLength="8"
+                                    placeholder="N° de Documento Elegido"
+                                    onChange={mngmtChange}
+                                    value={state.nroDocumento}
+                                    className="input-data"
+                                />
+                                <input
+                                    name="correo"
+                                    type="text"
+                                    maxLength="35"
+                                    placeholder="Correo"
+                                    onChange={mngmtChange}
+                                    value={state.correo}
+                                    className="input-data"
+                                />
+                                <input
+                                    name="contraseña"
+                                    type="password"
+                                    maxLength="12"
+                                    placeholder="Contraseña"
+                                    onChange={mngmtChange}
+                                    value={state.contraseña}
+                                    className="input-data"
+                                />
+                                <button
+                                    type="button"
+                                    className="save-btn"
+                                    onClick={escribir}
+                                >
+                                    Modificar
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </>
