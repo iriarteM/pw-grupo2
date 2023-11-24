@@ -11,19 +11,7 @@ const Perfil = () => {
     const { usuario } = router.query;
     console.log(`Usuario recuperado del login: ${usuario}`);
 
-    let alumnoEncontrado = null;
-
-    // Recorre el objeto de alumnos usando forEach
-    Object.keys(Alumno).forEach((id) => {
-        const alumno = Alumno[id];
-        if (alumno.correo === usuario) {
-            alumnoEncontrado = alumno;
-        }
-    });
-    console.log(
-        "Alumno encontrado:",
-        JSON.stringify(alumnoEncontrado, null, 4)
-    );
+    const [alumnoEncontrado, setAlumnoEncontrado] = useState(null);
 
     const [state, setState] = useState({
         nombres: "",
@@ -48,7 +36,7 @@ const Perfil = () => {
         };
 
         const request = await fetch(
-            "../../../api/actualizarAlumno/leer",
+            "/api/perfilActualizado/estudianteLeer",
             opciones
         );
         let data = await request.json();
@@ -59,29 +47,26 @@ const Perfil = () => {
     async function escribir() {
         let data = await leer();
 
-        const usuarioIndex = data.findIndex(
-            (usuario) => usuario.nroDocumento === alumnoEncontrado.nroDocumento
-        );
+        //const alumnoEncontrado = data.find((alumno) => alumno.correo === usuario);//para proyecto
 
-        if (usuarioIndex !== -1) {
-            data[usuarioIndex] = { ...data[usuarioIndex], ...state };
-        }
-
-        if (typeof data[adminIndex].imagen === undefined) {
-            data[adminIndex].imagen = null;
-        }
-
+        const alumnoEncontrado = data.find((alumno) => alumno.correo === "e@s");//prueba
+        alumnoEncontrado.nombre = state.nombres;
+        alumnoEncontrado.apellidos = state.apellidos;
+        alumnoEncontrado.tipo_documento = state.tipoDocumento;
+        alumnoEncontrado.n_ocumento = state.nroDocumento;
+        alumnoEncontrado.correo = state.correo;
+        alumnoEncontrado.contrasenia = state.password;
         // Llamar a escribir
         const opciones = {
-            method: "POST",
-            body: JSON.stringify(data),
+            method: "PUT",
+            body: JSON.stringify(alumnoEncontrado),
             headers: {
                 "Content-Type": "application/json",
             },
         };
 
         const request = await fetch(
-            "../../../api/actualizarAlumno/escribir",
+            "/api/perfilActualizado/estudianteActualizar",
             opciones
         );
         data = await request.json();
@@ -124,7 +109,7 @@ const Perfil = () => {
         };
 
         const request = await fetch(
-            "../../../api/actualizarAlumno/escribir",
+            "/api/perfilActualizado/estudianteActualizar",
             opciones
         );
         data = await request.json();
@@ -151,7 +136,7 @@ const Perfil = () => {
         };
 
         const request = await fetch(
-            "../../../api/actualizarAlumno/escribir",
+            "/api/perfilActualizado/estudianteActualizar",
             opciones
         );
         data = await request.json();
@@ -166,39 +151,6 @@ const Perfil = () => {
                         <title>Perfil Usuario</title>
                     </Head>
                     <div className="auth-container">
-                        <p>Imagen de Perfil:</p>
-                        <br />
-                        <p>
-                            <input
-                                type="file"
-                                accept="image/*"
-                                onChange={subirImagen}
-                            />
-
-                            {alumnoEncontrado?.imagen ? (
-                                <Image
-                                    src={alumnoEncontrado.imagen}
-                                    alt="Imagen de perfil"
-                                    className="imagen-de-perfil"
-                                    width={100}
-                                    height={100}
-                                />
-                            ) : (
-                                <p>No hay imagen de perfil</p>
-                            )}
-                        </p>
-                        <p>
-                            {alumnoEncontrado?.imagen ? (
-                                <button type="button" onClick={quitarImagen}>
-                                    Quitar imagen
-                                </button>
-                            ) : (
-                                <button type="button" onClick={guardarImagen}>
-                                    Guardar imagen seleccionada
-                                </button>
-                            )}
-                        </p>
-                        <br />
                         <div className="data-form">
                             <p>
                                 Si quiere cambiar sus datos tiene que modificar
@@ -268,7 +220,38 @@ const Perfil = () => {
                                 Modificar
                             </button>
                         </div>
+                        <div className="seccion-imagen">
+                        <p>Imagen de Perfil:</p>
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onChange={subirImagen}
+                        />
+
+                        {alumnoEncontrado?.imagen ? (
+                            <div className="imagen-de-perfil">
+                                <Image
+                                    src={alumnoEncontrado.imagen}
+                                    alt="Imagen de perfil"
+                                    width={100}
+                                    height={100}
+                                />
+                                <button
+                                    type="button"
+                                    onClick={alumnoEncontrado?.imagen
+                                        ? quitarImagen
+                                        : guardarImagen}
+                                >
+                                    {alumnoEncontrado?.imagen
+                                        ? "Quitar imagen"
+                                        : "Guardar imagen seleccionada"}
+                                </button>
+                            </div>
+                        ) : (
+                            <p>No hay imagen de perfil</p>
+                        )}
                     </div>
+                </div>
                 </>
             }
         />

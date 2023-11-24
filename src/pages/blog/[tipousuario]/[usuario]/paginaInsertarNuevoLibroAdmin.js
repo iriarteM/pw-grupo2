@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Head from "next/head";
-import Layout from "@/components/LayoutUsuario";
+import Layout from "@/components/LayoutAdmin";
 import { staticGenerationAsyncStorage } from "next/dist/client/components/static-generation-async-storage.external.js";
 import { useState } from 'react'
 
@@ -25,7 +25,7 @@ const Formulario = () => {
             }
         }
 
-        const request = await fetch( '../../api/actualizarLibreria/leer', opciones)
+        const request = await fetch( '/api/recursoAgregado/libroLeer', opciones)
         data = await request.json()
         console.log( data)
         return data
@@ -34,40 +34,18 @@ const Formulario = () => {
 
     async function escribir() {
         let data = await leer()
-        // Buscar el mayor ID
-        let mayor = 0
-        data.forEach(element => {
-            let id = parseInt( element["id"] )
-            if ( id > mayor ) {
-                mayor = id
-            }
-        });
-        // sumar 1
-        mayor = mayor + 1
-        
-        // Generar nuevo objeto JSON de Formulario
-        const obj = {
-            titulo: state.titulo,
-            autor: state.autor,
-            isbn: state.isbn,
-            tipo: state.tipo
-        }
 
-
-        // Agregar al arreglo JSON
-        data.push( obj)
-
-        console.log( JSON.stringify(data))
+        console.log( JSON.stringify(state))
         // Llamar a escribir
         const opciones = {
             method : 'POST',
-            body : JSON.stringify( data ),
+            body : JSON.stringify( state ),
             headers : {
                 "Content-Type" : "application/json"
             }
         }
 
-        const request = await fetch( '../../api/actualizarLibreria/escribir', opciones)
+        const request = await fetch( '/api/recursoAgregado/libroGuardar', opciones)
         data = await request.json()
         console.log( data)
 
@@ -120,11 +98,10 @@ const Formulario = () => {
       
                     <div className="contenedor_de_conexion">
                       <input
-                        id="input4"
                         type="text"
                         placeholder="Serie, Tipo"
-                        name="serieTipo"
-                        value={state.serieTipo}
+                        name="tipo"
+                        value={state.tipo}
                         onChange={mngmtChange}
                         className="campo_de_ingreso"
                         maxLength="35"
@@ -134,7 +111,7 @@ const Formulario = () => {
                   </div>
       
                   <button
-                    type="submit"
+                    type="button"
                     className="boton_de_ingreso"
                     onClick={escribir}
                   >

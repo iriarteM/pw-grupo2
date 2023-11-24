@@ -12,19 +12,7 @@ const Perfil = () => {
     const { usuario } = router.query;
     console.log(`Usuario recuperado del login: ${usuario}`);
 
-    let adminsEncontrado = null;
-
-    // Recorre el objeto de administradores usando forEach
-    Object.keys(Admins).forEach((id) => {
-        const admins = Admins[id];
-        if (admins.correo === usuario) {
-            adminsEncontrado = admins;
-        }
-    });
-    console.log(
-        "Administrador encontrado:",
-        JSON.stringify(adminsEncontrado, null, 4)
-    );
+    let [adminsEncontrado, setAdminsEncontrado] = useState(null);
 
     const [state, setState] = useState({
         nombre: "",
@@ -49,46 +37,37 @@ const Perfil = () => {
         };
 
         const request = await fetch(
-            "../../../api/actualizarAdmin/leer",
+            "/api/perfilActualizado/adminLeer",
             opciones
         );
         let data = await request.json();
         console.log(data);
+
         return data;
     }
 
     async function escribir() {
         let data = await leer();
 
-        const adminIndex = data.findIndex(
-            (usuario) => usuario.nroDocumento === adminsEncontrado.nroDocumento
-        );
-
-        if (adminIndex !== -1) {
-            data[adminIndex] = { ...data[adminIndex], ...state };
-        }
-
-        if (typeof data[adminIndex].imagen === undefined) {
-            data[adminIndex].imagen = null;
-        }
 
         // Llamar a escribir
         const opciones = {
-            method: "POST",
-            body: JSON.stringify(data),
+            method: "PUT",
+            body: JSON.stringify(state),
             headers: {
                 "Content-Type": "application/json",
             },
         };
 
         const request = await fetch(
-            "../../../api/actualizarAdmin/escribir",
+            "/api/perfilActualizado/adminActualizar",
             opciones
         );
         data = await request.json();
+        setAdminsEncontrado = data
         console.log(data);
     }
-
+    
     const [guardar, setGuardar] = useState(null);
 
     function subirImagen(event) {
@@ -109,7 +88,7 @@ const Perfil = () => {
         let data = await leer();
 
         const adminIndex = data.findIndex(
-            (usuario) => usuario.nroDocumento === adminsEncontrado.nroDocumento
+            (usuario) => usuario.id === 100
         );
         console.log(guardar);
         if (adminIndex !== -1) {
@@ -125,7 +104,7 @@ const Perfil = () => {
         };
 
         const request = await fetch(
-            "../../../api/actualizarAdmin/escribir",
+            "/api/perfilActualizado/adminActualizar",
             opciones
         );
         data = await request.json();
@@ -136,7 +115,7 @@ const Perfil = () => {
         let data = await leer();
 
         const adminIndex = data.findIndex(
-            (usuario) => usuario.nroDocumento === adminsEncontrado.nroDocumento
+            (usuario) => usuario.id === 100
         );
         console.log(guardar);
         if (adminIndex !== -1) {
@@ -152,7 +131,7 @@ const Perfil = () => {
         };
 
         const request = await fetch(
-            "../../../api/actualizarAdmin/escribir",
+            "/api/perfilActualizado/adminActualizar",
             opciones
         );
         data = await request.json();
@@ -169,46 +148,7 @@ const Perfil = () => {
                     <div className="contenedor_mayor">
                         <div className="auth-container">
                             <h1 className="titulo-perfil">PERFIL:</h1>
-                            <div>
-                                <input
-                                    type="file"
-                                    id="cargarImagen"
-                                    accept="image/*"
-                                    style={{ display: "none" }}
-                                    onChange={subirImagen}
-                                />
-                                <label htmlFor="cargarImagen">
-                                    Cargar Imagen
-                                </label>
-                                {adminsEncontrado?.imagen ? (
-                                    <Image
-                                        src={adminsEncontrado.imagen}
-                                        alt="Imagen de perfil"
-                                        className="imagen-de-perfil"
-                                        width={100}
-                                        height={100}
-                                    />
-                                ) : (
-                                    <p>No hay imagen de perfil</p>
-                                )}
-                            </div>
-                            <p>
-                                {adminsEncontrado?.imagen ? (
-                                    <button
-                                        type="button"
-                                        onClick={quitarImagen}
-                                    >
-                                        Quitar imagen
-                                    </button>
-                                ) : (
-                                    <button
-                                        type="button"
-                                        onClick={guardarImagen}
-                                    >
-                                        Guardar imagen seleccionada
-                                    </button>
-                                )}
-                            </p>
+                            
                             <br />
                             <div className="data-form">
                                 <p>
@@ -280,7 +220,48 @@ const Perfil = () => {
                                 </button>
                             </div>
                         </div>
+                            <div className="seccion-imagen">
+                            <input
+                                    type="file"
+                                    id="cargarImagen"
+                                    accept="image/*"
+                                    style={{ display: "none" }}
+                                    onChange={subirImagen}
+                                />
+                                <label htmlFor="cargarImagen">
+                                    Cargar Imagen
+                                </label>
+                                {adminsEncontrado?.imagen ? (
+                                    <Image
+                                        src={adminsEncontrado.imagen}
+                                        alt="Imagen de perfil"
+                                        className="imagen-de-perfil"
+                                        width={100}
+                                        height={100}
+                                    />
+                                ) : (
+                                    <p>No hay imagen de perfil</p>
+                                )}
+                                <p>
+                                {adminsEncontrado?.imagen ? (
+                                    <button
+                                        type="button"
+                                        onClick={quitarImagen}
+                                    >
+                                        Quitar imagen
+                                    </button>
+                                ) : (
+                                    <button
+                                        type="button"
+                                        onClick={guardarImagen}
+                                    >
+                                        Guardar imagen seleccionada
+                                    </button>
+                                )}
+                            </p>
+                            </div>
                     </div>
+                    
                 </>
             }
         />
