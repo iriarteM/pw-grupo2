@@ -10,8 +10,6 @@ const Formulario = () => {
         { titulo : "", autor : "", isbn : "", tipo : "", id:""}
         )
 
-    const [key, setKey] = useState("")
-
     var data
 
     function mngmtChange(e){
