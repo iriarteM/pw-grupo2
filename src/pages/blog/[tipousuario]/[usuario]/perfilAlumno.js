@@ -47,13 +47,13 @@ const Perfil = () => {
     async function escribir() {
         let data = await leer();
 
-        //const alumnoEncontrado = data.find((alumno) => alumno.correo === usuario);//para proyecto
+        const alumnoEncontrado = data.find((alumno) => alumno.correo === usuario);//para proyecto
 
-        const alumnoEncontrado = data.find((alumno) => alumno.correo === "e@s");//prueba
+        //const alumnoEncontrado = data.find((alumno) => alumno.correo === "e@s");//prueba
         alumnoEncontrado.nombre = state.nombres;
         alumnoEncontrado.apellidos = state.apellidos;
         alumnoEncontrado.tipo_documento = state.tipoDocumento;
-        alumnoEncontrado.n_ocumento = state.nroDocumento;
+        alumnoEncontrado.n_documento = state.nroDocumento;
         alumnoEncontrado.correo = state.correo;
         alumnoEncontrado.contrasenia = state.password;
         // Llamar a escribir

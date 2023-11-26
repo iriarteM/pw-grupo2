@@ -7,8 +7,10 @@ import { useState } from 'react'
 const Formulario = () => {
 
     const [state, setState] = useState( 
-        { titulo : "", autor : "", isbn : "", tipo : "",}
+        { titulo : "", autor : "", isbn : "", tipo : "", id:""}
         )
+
+    const [key, setKey] = useState("")
 
     var data
 
@@ -69,6 +71,25 @@ const Formulario = () => {
       console.log( data)
 
   }
+
+  async function modificar() {
+    let data = await leer()
+
+    console.log( JSON.stringify(state))
+    // Llamar a escribir
+    const opciones = {
+        method : 'PUT',
+        body : JSON.stringify( state ),
+        headers : {
+            "Content-Type" : "application/json"
+        }
+    }
+
+    const request = await fetch( '/api/recursoAgregado/libroModificar', opciones)
+    data = await request.json()
+    console.log( data)
+
+}
 
     return (    
         <>
@@ -138,13 +159,33 @@ const Formulario = () => {
                   </button>
 
                   <div>
-                    <p>En de querer eliminar el recurso ingresado por el formulario, presione eliminar</p>
+                    <p>De querer eliminar el recurso ingresado por el formulario, presione "ELIMINAR"</p>
                     <button
                     type="button"
-                    className="save-btn"
                     onClick={eliminar}
                   >
-                    ELIMINAR RECURSO
+                    ELIMINAR
+                  </button>
+                  </div>
+                  <div>
+                  <p>Si quieres modificar un libro con los datos ingresados, escribe el ID del libro y presione el boton "MODIFICAR"</p>
+                  <input
+                        type="text"
+                        placeholder="ID"
+                        name="id"
+                        value={state.id}
+                        onChange={mngmtChange}
+                        className="campo_de_ingreso"
+                        style={{
+                          border: '1px solid #ccc',}}
+                        maxLength="35"
+                        required
+                      />
+                  <button
+                    type="button"
+                    onClick={modificar}
+                  >
+                    MODIFICAR
                   </button>
                   </div>
                 </form>
