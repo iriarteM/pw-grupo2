@@ -3,9 +3,6 @@ import Head from "next/head";
 import { useState } from "react";
 import { useRouter } from "next/router";
 
-import Admins from "/administradores.json";
-import Usuario from "/usuarios.json";
-
 const Login = () => {
     const [state, setState] = useState({ usuario: "", contraseña: "" });
     const router = useRouter();
@@ -22,28 +19,33 @@ const Login = () => {
 
         const { usuario, contraseña } = state;
 
-        // Verifica administrador
-        const admin = Object.values(Admins).find(
-            (admin) =>
-                admin.correo === usuario && admin.contraseña === contraseña
-        );
+        async function leer() {
+            const opciones = {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            };
+    
+            const request = await fetch(
+                "/api/validar/leeUsuarios",//
+                opciones
+            );
+            let data = await request.json();
+            console.log(data);
+            return data;
+        }
 
-        // Verifica alumno
-        const alumno = Object.values(Usuario).find(
-            (alumno) =>
-                alumno.correo === usuario && alumno.password === contraseña
-        );
+        const datos = await leer();
+        const admin = datos.find((d) => d.tipo_usuario === "administrador" && d.correo === usuario && d.contrasenia === contraseña);
+        const estudiante = datos.find((d) => d.tipo_usuario === "estudiante" && d.correo === usuario && d.contrasenia === contraseña);
 
         if (admin) {
             // Es un administrador
             router.push(`/blog/admin/${admin.correo}/inicioAdmin`);
-        } else if (
-            alumno &&
-            alumno.correo === usuario &&
-            alumno.password === contraseña
-        ) {
+        } else if (estudiante) {
             // Es un alumno
-            router.push(`/blog/alumno/${alumno.correo}/inicioAlumno`);
+            router.push(`/blog/alumno/${estudiante.correo}/inicioAlumno`);
         } else {
             alert("No coincide la contraseña o usuario");
         }
