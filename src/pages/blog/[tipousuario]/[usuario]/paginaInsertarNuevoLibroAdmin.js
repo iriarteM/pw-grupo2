@@ -51,12 +51,31 @@ const Formulario = () => {
 
     }
 
+    async function eliminar() {
+      let data = await leer()
+
+      console.log( JSON.stringify(state))
+      // Llamar a escribir
+      const opciones = {
+          method : 'DELETE',
+          body : JSON.stringify( state ),
+          headers : {
+              "Content-Type" : "application/json"
+          }
+      }
+
+      const request = await fetch( '/api/recursoAgregado/libroEliminar', opciones)
+      data = await request.json()
+      console.log( data)
+
+  }
+
     return (    
         <>
             <div className="interconexion">
                 <form action="" className="formulario_de_conexion">
                   <h1 className="titulo_de_acceso">
-                    Adicion de nuevo recurso
+                    Adición de nuevo recurso
                   </h1>
                   <div className="campos_de_ingreso">
                     <div className="contenedor_de_conexion">
@@ -117,6 +136,17 @@ const Formulario = () => {
                   >
                     Guardar
                   </button>
+
+                  <div>
+                    <p>En de querer eliminar el recurso ingresado por el formulario, presione eliminar</p>
+                    <button
+                    type="button"
+                    className="save-btn"
+                    onClick={eliminar}
+                  >
+                    ELIMINAR RECURSO
+                  </button>
+                  </div>
                 </form>
               </div>
         </>
